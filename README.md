@@ -17,7 +17,7 @@ A powerful command-line tool for generating Data Load Tool (DLT) extraction serv
 
 ```bash
 # Clone or download the DLT Generator
-git clone <repository-url>
+git clone https://github.com/Eminence-bit/Backend-Tools-and-assessment.git
 
 # Ensure Python 3.8+ is installed
 python --version
