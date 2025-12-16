@@ -21,11 +21,6 @@ The HubSpot Deals ETL service integrates with HubSpot CRM API v3 endpoints to ex
 | `/crm/v3/properties/deals`         | Get deal property definitions       | v3          | crm.schemas.deals.read   | Optional     |
 | `/crm/v3/pipelines/deals`          | Get deal pipeline configurations    | v3          | crm.schemas.deals.read   | Optional     |
 
-### 🎯 **Recommendation**
-**Start with only the required endpoint.** The `/crm/v3/objects/deals` endpoint provides all essential deal data needed for basic deals analytics and extraction.
-
----
-
 ## 🔐 Authentication Requirements
 
 ### **Private App Access Token Authentication**
@@ -561,37 +556,6 @@ HTTP/400 Bad Request
 
 ---
 
-## 🔒 Security Requirements
-
-### **API Token Permissions**
-
-#### ✅ **Required (Minimum Permissions)**
-```
-Required Scopes:
-- [scope_1] (for basic [object] information)
-```
-
-#### 🔧 **Optional (Advanced Features)**
-```
-Additional Scopes (only if using optional endpoints):
-- [scope_2] (for [related data] information)
-- [scope_3] (for [object] configuration)
-```
-
-### **User Permissions**
-
-#### ✅ **Required (Minimum)**
-The API token user must have:
-- **[Permission_1]** global permission
-- **[Permission_2]** permission
-
-#### 🔧 **Optional (Advanced Features)**
-Additional permissions (only if using optional endpoints):
-- **[Permission_3]** permission (for [object] configuration details)
-- **[Permission_4]** (for [additional data] access)
-
----
-
 ## 📈 Monitoring & Debugging
 
 ### **Request Headers for Debugging**
@@ -699,26 +663,6 @@ def retry_with_backoff(func, max_retries=3):
 
 ### **Issue**: Need Pipeline/Stage Information But Want to Keep It Simple**
 **Solution**: Start with `/crm/v3/objects/deals` only. Add `/crm/v3/pipelines/deals` later if needed for advanced pipeline analytics
-
----
-
-## 💡 **Implementation Recommendations**
-
-### 🎯 **Phase 1: Start Simple (Recommended)**
-1. Implement only `/crm/v3/objects/deals`
-2. Extract basic deal data (id, dealname, amount, dealstage, closedate, pipeline info)
-3. This covers 90% of deals analytics needs
-
-### 🔧 **Phase 2: Add Advanced Features (If Needed)**
-1. Add `/crm/v3/objects/deals/{dealId}` for detailed deal info
-2. Add `/crm/v3/objects/deals/batch/read` for batch processing
-3. Add `/crm/v3/properties/deals` for property definitions
-4. Add `/crm/v3/pipelines/deals` for pipeline configurations
-
-### ⚡ **Performance Tip**
-- **Simple approach**: 1 API call per 100 deals
-- **Advanced approach**: 1 + N API calls (N = number of deals for details)
-- Start simple to minimize API usage and complexity!
 
 ---
 
